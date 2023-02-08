@@ -43,7 +43,7 @@ Param
 Write-Host Merging .nessus files in folder $filepath 
 
 # Get all .nessus files
-$files = Get-ChildItem $filepath -Filter *.nessus
+$files = Get-ChildItem $filepath -Filter *.nessus -Recurse | ForEach-Object{$_.Fullname}
 
 # Check if the folder contains .nessus files
 if ($files.count -eq 0) 
